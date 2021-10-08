@@ -5,7 +5,7 @@ pipeline {
 			steps {
 				echo 'building the application...'
 				sh """
-				  docker build --no-cache -t freecloudtest/mywebapp:latest .
+				  docker build  --no-cache -t freecloudtest/mywebapp:latest .
 				"""
 			}
 		
@@ -16,14 +16,12 @@ pipeline {
 			}
 		
 		}
-		stage("publish"){
+		stage("run"){
 			steps {
-				echo 'testing the application...'
-				withDockerRegistry([ credentialsId: "freecloudtest", url: "" ]) {
+				echo 'running the application...'
 				sh """
-				  docker push freecloudtest/mywebapp:latest
+				  docker run -itd --name weboncentos -p 80:80 freecloudtest/mywebapp:latest
 				"""
-				}
 			}
 		
 		}
