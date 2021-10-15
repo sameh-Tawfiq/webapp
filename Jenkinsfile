@@ -29,6 +29,9 @@ pipeline {
 		stage("deploy"){
 			steps {
 				echo 'deploying the application...'
+				sh """
+				  docker run freecloudtest/mywebapp:latest
+				"""
 			}
 		
 		}
