@@ -30,7 +30,7 @@ pipeline {
 			steps {
 				echo 'deploying the application...'
 				sh """
-				  docker run freecloudtest/mywebapp:latest
+				  docker run -itd --name weboncentos -p 80:80 freecloudtest/mywebapp:latest
 				"""
 			}
 		
