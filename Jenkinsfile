@@ -31,7 +31,7 @@ pipeline {
 			steps {
 				echo 'deploying the application...'
 				sh """
-				  ansible-playbook playbook
+				  ansible-playbook playbook.yml
 				"""
 			}
 		
