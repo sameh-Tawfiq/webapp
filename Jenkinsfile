@@ -16,6 +16,18 @@ pipeline {
 			}
 		
 		}
+		stage("publish"){
+			steps {
+				echo 'Publishing the application...'
+				withDockerRegistry([ credentialsId: "freecloudtest", url: "" ]) {
+				sh """
+				  docker push freecloudtest/mywebapp:latest
+				"""
+				}
+			}
+		
+		}
+		
 		stage("deploy"){
 			steps {
 				echo 'deploying the application...'
