@@ -1,0 +1,12 @@
+- hosts: localhost
+  become: true
+  tasks:
+  - name: Re-create a weboncentos container
+    docker_container:
+      name: weboncentos
+      image: freecloudtest/mywebapp:latest
+      state: started
+      detach: yes
+      recreate: yes
+      ports:
+        - "80:80"
