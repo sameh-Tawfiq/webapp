@@ -30,6 +30,9 @@ pipeline {
 		stage("deploy"){
 			steps {
 				echo 'deploying the application...'
+                                sh """
+				  /usr/local/bin/ansible-playbook playbook.yml
+				"""
 			}
 		
 		}
