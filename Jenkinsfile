@@ -4,6 +4,9 @@ pipeline {
 		stage("build"){
 			steps {
 				echo 'building the application...'
+                                sh """
+				  docker build  --no-cache -t freecloudtest/mywebapp:latest .
+				"""
 			}
 		
 		}
